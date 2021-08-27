@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -390,7 +390,7 @@ namespace MidTerm_MockBuster
             AllMovies.RemoveAt(index - 1);
             Console.WriteLine("\nHere's the updated movie repository!\n");
             AllMovies = MoviesRepo.GetMovie(AllMovies);
-
+            
         }
     }
 
@@ -661,48 +661,48 @@ namespace MidTerm_MockBuster
                         }
                     }
 
-                    //Goto Admin DeleteMovie Funtion
-                    if (action == "d" || action == "D")
-                    {
-                        Console.WriteLine("\nHere's the current movie repository listing.\n");
-                        MoviesRepo.GetMovie(AllMovies);
-                        Console.Write("\nPlease enter the number of the movie to delete: ");
-                        string MovieDel = Console.ReadLine();
-                        int index = int.Parse(MovieDel);
-
-                        Console.WriteLine("\nHere is the movie you chose to delete:\n");
-                        Console.WriteLine(AllMovies[index - 1]);
-                        Console.Write("\nPlease confirm movie deletion: (y/n) ");
-                        string entry = Console.ReadLine();
-                        if (entry == "y" || entry == "Y")
+                        //Goto Admin DeleteMovie Funtion
+                        if (action == "d" || action == "D")
                         {
-                            Admin.DeleteMovie(AllMovies, index);
+                            Console.WriteLine("\nHere's the current movie repository listing.\n");
+                            MoviesRepo.GetMovie(AllMovies);
+                            Console.Write("\nPlease enter the number of the movie to delete: ");
+                            string MovieDel = Console.ReadLine();
+                            int index = int.Parse(MovieDel);
+
+                            Console.WriteLine("\nHere is the movie you chose to delete:\n");
+                            Console.WriteLine(AllMovies[index - 1]);
+                            Console.Write("\nPlease confirm movie deletion: (y/n) ");
+                            string entry = Console.ReadLine();
+                            if (entry == "y" || entry == "Y")
+                            {
+                                Admin.DeleteMovie(AllMovies, index);
+                            }
                         }
-                    }
-                } while (contAdmin());
+                    } while (contAdmin()) ;
+                }
+        }
+
+            static void Main(string[] args)
+            {
+                ////Initialize the list of 5 movies
+                List<Movie> AllMovies = new List<Movie>();
+
+                do
+                {
+                    //Top Level Greeting Menu
+                    Console.WriteLine("***************************************************");
+                    Console.WriteLine("* Welcome to MockBuster's Online Movie Repository *");
+                    Console.WriteLine("***************************************************");
+
+                    MoviesRepo.GetMovie(AllMovies);
+                    //Choose User Menu or Admin Menu
+                    Console.Write("Please login as (U)ser or (A)dmin: ");
+                    string login = Console.ReadLine();
+                    TopLevelMenu(MoviesRepo.GetMovie(AllMovies), login);
+                } while (contBuster());
+                Console.WriteLine("\nGoodbye!! Thank you for stopping by MockBuster's Online Movie Repository!");
+
             }
         }
-
-        static void Main(string[] args)
-        {
-            ////Initialize the list of 5 movies
-            List<Movie> AllMovies = new List<Movie>();
-
-            do
-            {
-                //Top Level Greeting Menu
-                Console.WriteLine("***************************************************");
-                Console.WriteLine("* Welcome to MockBuster's Online Movie Repository *");
-                Console.WriteLine("***************************************************");
-
-                MoviesRepo.GetMovie(AllMovies);
-                //Choose User Menu or Admin Menu
-                Console.Write("Please login as (U)ser or (A)dmin: ");
-                string login = Console.ReadLine();
-                TopLevelMenu(MoviesRepo.GetMovie(AllMovies), login);
-            } while (contBuster());
-            Console.WriteLine("\nGoodbye!! Thank you for stopping by MockBuster's Online Movie Repository!");
-
-        }
     }
-}
