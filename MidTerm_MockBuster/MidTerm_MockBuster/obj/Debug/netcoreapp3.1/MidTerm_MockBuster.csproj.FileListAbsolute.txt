@@ -1,0 +1,13 @@
+C:\Dev\Week7\MidTerm_MockBuster\MidTerm_MockBuster\bin\Debug\netcoreapp3.1\MidTerm_MockBuster.exe
+C:\Dev\Week7\MidTerm_MockBuster\MidTerm_MockBuster\bin\Debug\netcoreapp3.1\MidTerm_MockBuster.deps.json
+C:\Dev\Week7\MidTerm_MockBuster\MidTerm_MockBuster\bin\Debug\netcoreapp3.1\MidTerm_MockBuster.runtimeconfig.json
+C:\Dev\Week7\MidTerm_MockBuster\MidTerm_MockBuster\bin\Debug\netcoreapp3.1\MidTerm_MockBuster.runtimeconfig.dev.json
+C:\Dev\Week7\MidTerm_MockBuster\MidTerm_MockBuster\bin\Debug\netcoreapp3.1\MidTerm_MockBuster.dll
+C:\Dev\Week7\MidTerm_MockBuster\MidTerm_MockBuster\bin\Debug\netcoreapp3.1\MidTerm_MockBuster.pdb
+C:\Dev\Week7\MidTerm_MockBuster\MidTerm_MockBuster\obj\Debug\netcoreapp3.1\MidTerm_MockBuster.csprojAssemblyReference.cache
+C:\Dev\Week7\MidTerm_MockBuster\MidTerm_MockBuster\obj\Debug\netcoreapp3.1\MidTerm_MockBuster.AssemblyInfoInputs.cache
+C:\Dev\Week7\MidTerm_MockBuster\MidTerm_MockBuster\obj\Debug\netcoreapp3.1\MidTerm_MockBuster.AssemblyInfo.cs
+C:\Dev\Week7\MidTerm_MockBuster\MidTerm_MockBuster\obj\Debug\netcoreapp3.1\MidTerm_MockBuster.csproj.CoreCompileInputs.cache
+C:\Dev\Week7\MidTerm_MockBuster\MidTerm_MockBuster\obj\Debug\netcoreapp3.1\MidTerm_MockBuster.dll
+C:\Dev\Week7\MidTerm_MockBuster\MidTerm_MockBuster\obj\Debug\netcoreapp3.1\MidTerm_MockBuster.pdb
+C:\Dev\Week7\MidTerm_MockBuster\MidTerm_MockBuster\obj\Debug\netcoreapp3.1\MidTerm_MockBuster.genruntimeconfig.cache

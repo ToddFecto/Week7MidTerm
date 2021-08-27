@@ -1,0 +1,1399 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace MidTerm_MockBuster
+{
+   public enum MovieGenre
+    {
+        Action,
+        Horror,
+        Thriller,
+        Sci_Fi,
+        Drama,
+        Comedy,
+        War,
+        Western,
+        Sports,
+        Romance,
+        Crime
+    }
+
+    public class Movie
+    {
+        public string MovieName { get; set; }
+        public string MainActor { get; set; }
+        public MovieGenre Genre { get; set; }
+        public string Director { get; set; }
+
+        public Movie(string _MovieName, string _MainActor, MovieGenre _Genre, string _Director)
+        {
+            MovieName = _MovieName;
+            MainActor = _MainActor;
+            Genre = _Genre;
+            Director = _Director;
+        }
+
+        public override string ToString()
+        {
+            return $"Title: {MovieName}, Actor: {MainActor}, Genre: {Genre}, Director: {Director}";
+        }
+    }
+
+    public class MoviesRepo
+    {
+        public static List<Movie> GetMovie(List<Movie> TheList)
+        {
+
+            List<Movie> AllMovies = new List<Movie>();
+            //Movie mymovie;
+
+            //mymovie = new Movie("The Rock", "Nicolas Cage", "Action", "Michael Bay");
+            //AllMovies.Add(mymovie);
+            //mymovie = new Movie("A Quiet Place 2", "Emily Blunt", "Horror", "Michael Bay");
+            //AllMovies.Add(mymovie);
+            //mymovie = new Movie("SongBird", "KJ Apa", "Thriller", "Michael Bay");
+            //AllMovies.Add(mymovie);
+            //mymovie = new Movie("I Am Number Four", "Alex Pettyfer", "Sci-Fi", "Michael Bay");
+            //AllMovies.Add(mymovie);
+            //mymovie = new Movie("Seven Samari", "Toshiro Mifune", "Drama", "Akira Kurosawa");
+            //AllMovies.Add(mymovie);
+
+            AllMovies = new List<Movie>
+            {
+                new Movie("The Rock1", "Nicolas Cage", MovieGenre.Action, "Michael Bay"),
+                new Movie("A Quiet Place", "Emily Blunt", MovieGenre.Horror, "Michael Bay"),
+                new Movie("SongBird", "KJ Apa", MovieGenre.Thriller, "Michael Bay"),
+                new Movie("I Am Number Four", "Alex Pettyfer", MovieGenre.Sci_Fi, "Michael Bay"),
+                new Movie("Seven Samari", "Toshiro Mifune", MovieGenre.Drama, "Akira Kurosawa"),
+            };
+
+            for (int index = 0; index < TheList.Count; index++)
+            {
+                Console.WriteLine($"{index + 1}. {TheList[index]}");
+            }
+
+            return AllMovies;
+        }
+    }
+
+    class User
+    {
+        //UserMenu
+        //Method to filter by Genre
+        public static void FilterGenre(List<Movie> AllMovies, string _GenreFilterStr)
+        {
+            AllMovies = new List<Movie>();
+            //Movie mymovie;
+            //var movieQuery = genre in AllMovies where MovieGenre _Genre
+            
+            //switch (_GenreFilterStr)
+            //{
+            //    case "ACTION":
+            //        {
+            //            List<Movie> results = AllMovies.FindAll(FindAction);
+            //            if (results.Count != 0)
+            //            {
+            //                Console.WriteLine(results); 
+            //            }
+            //        }
+            //        break;
+                //case "HORROR":
+                //    _Genre = MovieGenre.Horror;
+                //    break;
+                //case "THRILLER":
+                //    _Genre = MovieGenre.Thriller;
+                //    break;
+                //case "SCI-FI":
+                //    _Genre = MovieGenre.Sci_Fi;
+                //    break;
+                //case "DRAMA":
+                //    _Genre = MovieGenre.Drama;
+                //    break;
+            //}
+        }
+
+        //Method to filter by MovieName
+
+        //public static void FilterMovieName()
+        //{
+
+        //}
+
+        //Methof to filter by MainActor
+
+        //public static void FilterMainActor()
+        //{
+
+        //}
+
+        //Method to filter by Director
+
+        //public static void FilterDirector()
+        //{
+
+        //}
+    }
+
+    class Admin
+    {
+        //Menu's Allow for filtering and CRUD functions
+        //AdminMenu
+        //Method to filter by Genre(Read/List)
+
+        //Method to filter by MovieName(Read/List)
+
+        //Methof to filter by MainActor(Read)
+
+        //Method to filter by Director(Read/List)
+
+//Method to AddMovie(Create)
+        public static void AddMovie(List<Movie> AllMovies, string _MovieName, string  _MainActor, string _GenreStr, string _Director)
+        {
+            MovieGenre _Genre = MovieGenre.Action;
+            switch (_GenreStr)
+            {
+                case "ACTION":
+                    _Genre = MovieGenre.Action;
+                    break;
+                case "HORROR":
+                    _Genre = MovieGenre.Horror;
+                    break;
+                case "THRILLER":
+                    _Genre = MovieGenre.Thriller;
+                    break;
+                case "SCI-FI":
+                    _Genre = MovieGenre.Sci_Fi;
+                    break;
+                case "DRAMA":
+                    _Genre = MovieGenre.Drama;
+                    break;
+                case "COMEDY":
+                    _Genre = MovieGenre.Comedy;
+                    break;
+                case "WAR":
+                    _Genre = MovieGenre.War;
+                    break;
+                case "WESTERN":
+                    _Genre = MovieGenre.Western;
+                    break;
+                case "SPORTS":
+                    _Genre = MovieGenre.Sports;
+                    break;
+                case "ROMANCE":
+                    _Genre = MovieGenre.Romance;
+                    break;
+                case "CRIME":
+                    _Genre = MovieGenre.Crime;
+                    break;
+            }
+
+
+            Movie mymovie = new Movie(_MovieName, _MainActor, _Genre, _Director);
+            AllMovies.Add(mymovie);
+            Console.WriteLine($"Added new movie {mymovie} to the repository.\n");
+            Console.WriteLine("\nHere's the updated movie repository!\n");
+            //AllMovies = MoviesRepo.GetMovie(AllMovies);
+            MoviesRepo.GetMovie(AllMovies);
+        }
+
+        //Methods to Edit(Update) MovieName, MainActor, Genre, Director
+
+//Method to Edit MovieName
+
+        public static void EditMovieName(List<Movie> AllMovies, int index, string MovieToUpd, string UpdMovie)
+        {
+            Movie mymovie = AllMovies[index - 1];
+            MovieToUpd = mymovie.MovieName;
+
+            Movie UpdMovieName = mymovie as Movie;
+            //    Console.Write("Updated Director: ");
+            UpdMovieName.MovieName = UpdMovie;
+            Console.WriteLine($"\nThe Movie {MovieToUpd} was updated to {UpdMovieName.MovieName}.\n");
+            Console.WriteLine("\nHere's the updated movie repository!\n");
+            MoviesRepo.GetMovie(AllMovies);
+        }
+
+//Method to Edit MainActor
+        public static void EditMainActor(List<Movie> AllMovies, int index, string MainActorUpd)
+        {
+            Movie mymovie = AllMovies[index - 1];
+            //string MovieToUpd = mymovie.MovieName;
+
+            Movie UpdActor = mymovie as Movie;
+            //    Console.Write("Updated Director: ");
+            UpdActor.MainActor = MainActorUpd;
+            Console.WriteLine($"\nThe Main Actor for {UpdActor.MovieName} was updated to {UpdActor.MainActor}.\n");
+            Console.WriteLine("\nHere's the updated movie repository!\n");
+            AllMovies = MoviesRepo.GetMovie(AllMovies);
+        }
+
+        //Method to Edit Genre
+        public static void EditGenre(List<Movie> AllMovies, int index, string _GenreStr)
+        {
+            //Console.WriteLine("Here's the current movie repository listing.");
+            //MoviesRepo.ListMovies(TheList);
+            //Console.Write("Please enter the number of the movie to edit: ");
+            //string MovieUpd = Console.ReadLine();
+            //int index = int.Parse(MovieUpd);
+
+            Movie mymovie = AllMovies[index - 1];
+            //Console.WriteLine("Here is the movie you chose to edit");
+            //Console.WriteLine(mymovie);
+            string MovieToUpd = mymovie.MovieName;
+            //Console.Write("Please choose the field to edit: Movie (N)ame, Main (A)ctor, (G)enre (D)irector: ");
+            //string entry = Console.ReadLine();
+            //if (entry == "n" || entry == "N")
+            //{
+            //    Movie UpdMovie = mymovie as Movie;
+            //    Console.Write("Updated Title: ");
+            //    UpdMovie.MovieName = Console.ReadLine();
+            //    Console.WriteLine($"\n{MovieToUpd} was updated to {UpdMovie.MovieName}.");
+            //    Console.WriteLine("\nHere's the updated movie repository!");
+            //    MoviesRepo.ListMovies(TheList);
+            //}
+            //if (entry == "a" || entry == "A")
+            //{
+            //    Movie UpdActor = mymovie as Movie;
+            //    Console.Write("Updated Actor: ");
+            //    UpdActor.MainActor = Console.ReadLine();
+            //    Console.WriteLine($"\n{UpdActor.MainActor} was updated to {UpdActor.MainActor}.");
+            //    Console.WriteLine("\nHere's the updated movie repository!");
+            //    MoviesRepo.ListMovies(TheList);
+            //}
+            //if (entry == "g" || entry == "G")
+            //{
+                Movie UpdGenre = mymovie as Movie;
+            //    Console.Write("Updated Genre: ");
+            //    string _GenreStr = Console.ReadLine();
+            //    _GenreStr = _GenreStr.ToUpper();
+                UpdGenre.Genre = MovieGenre.Action;
+                switch (_GenreStr)
+                {
+                    case "ACTION":
+                        UpdGenre.Genre = MovieGenre.Action;
+                        break;
+                    case "HORROR":
+                        UpdGenre.Genre = MovieGenre.Horror;
+                        break;
+                    case "THRILLER":
+                        UpdGenre.Genre = MovieGenre.Thriller;
+                        break;
+                    case "SCI-FI":
+                        UpdGenre.Genre = MovieGenre.Sci_Fi;
+                        break;
+                    case "DRAMA":
+                        UpdGenre.Genre = MovieGenre.Drama;
+                        break;
+                    case "COMEDY":
+                        UpdGenre.Genre = MovieGenre.Comedy;
+                        break;
+                    case "WAR":
+                        UpdGenre.Genre = MovieGenre.War;
+                        break;
+                    case "WESTERN":
+                        UpdGenre.Genre = MovieGenre.Western;
+                        break;
+                    case "SPORTS":
+                        UpdGenre.Genre = MovieGenre.Sports;
+                        break;
+                    case "ROMANCE":
+                        UpdGenre.Genre = MovieGenre.Romance;
+                        break;
+                    case "CRIME":
+                        UpdGenre.Genre = MovieGenre.Crime;
+                        break;
+                }
+                Console.WriteLine($"The Genre for {UpdGenre.MovieName} was updated to {_GenreStr}.");
+                Console.WriteLine("\nHere's the updated movie repository!\n");
+                AllMovies = MoviesRepo.GetMovie(AllMovies);
+        }
+
+        //Method to Edit Director
+        public static void EditDirector(List<Movie> AllMovies, int index, string DirectorUpd)
+        {
+            Movie mymovie = AllMovies[index - 1];
+            //string MovieToUpd = mymovie.MovieName;
+
+            Movie UpdDirector = mymovie as Movie;
+            //    Console.Write("Updated Director: ");
+            UpdDirector.Director = DirectorUpd;
+            Console.WriteLine($"\nThe Director for {UpdDirector.MovieName} was updated to {UpdDirector.Director}.\n");
+            Console.WriteLine("\nHere's the updated movie repository!\n");
+            AllMovies = MoviesRepo.GetMovie(AllMovies);
+        }
+
+        //Method to DeleteMovie(Remove)
+        public static void DeleteMovie(List<Movie> AllMovies, int index)
+        {
+            //Console.WriteLine("Here's the current movie repository listing.");
+            //MoviesRepo.ListMovies(TheList);
+            //Console.Write("Please enter the number of the movie to delete: ");
+            //string MovieDel = Console.ReadLine();
+            //int index = int.Parse(MovieDel);
+
+            //Console.WriteLine("Here is the movie you chose to delete");
+            //Console.WriteLine(TheList[index - 1]);
+            //Console.Write("Please confirm movie deletion: (y/n) ");
+            //string entry = Console.ReadLine();
+            //if (entry == "y" || entry == "Y")
+            //{
+                Console.WriteLine($"\nThe record for {AllMovies[index - 1]} has been deleted.");
+                AllMovies.RemoveAt(index - 1);
+                Console.WriteLine("\nHere's the updated movie repository!\n");
+                AllMovies = MoviesRepo.GetMovie(AllMovies);
+            //}
+        }
+    }
+
+    class Program
+    {
+        static bool contBuster()
+        {
+            while (true)
+            {
+                Console.WriteLine("\n******************************************");
+                Console.WriteLine("* Welcome Back to MockBuster's Main Menu *");
+                Console.WriteLine("******************************************");
+                Console.Write("\nDo you want to stay logged into MockBuster'S Movie Respository? (Enter 'yes' or 'no'): ");                        //Prompts for user input to continue or not
+                string moreBuster = Console.ReadLine();
+                moreBuster = moreBuster.ToLower();                           //Converts input case to only lower case
+
+                if (moreBuster == "y" || moreBuster == "yes")                //Checks the condition to continue measuring rooms or quit
+                {
+                    return true;
+                }
+                else if (moreBuster == "n" || moreBuster == "no")
+                {
+                    return false;
+                }
+                else
+                {
+                    Console.Write("Please enter only y or n!");                //Prompts user to only enter a y (yes ) or n (no) if another character is entered
+                }
+            }
+        }
+
+        static bool contUser()
+        {
+            while (true)
+            {
+                Console.Write("\n\nDo you want to stay logged into the User portal? (Enter 'yes' or 'no'): ");                        //Prompts for user input to continue or not
+                string moreUser = Console.ReadLine();
+                moreUser = moreUser.ToLower();                           //Converts input case to only lower case
+
+                if (moreUser == "y" || moreUser == "yes")                //Checks the condition to continue User portal or quit
+                {
+                    return true;
+                }
+                else if (moreUser == "n" || moreUser == "no")
+                {
+                    return false;
+                }
+                else
+                {
+                    Console.Write("Please enter only y or n!");                //Prompts user to only enter a y (yes ) or n (no) if another character is entered
+                }
+            }
+        }
+
+        static bool contAdmin()
+        {
+            while (true)
+            {
+                Console.Write("\n\nDo you want to stay logged into the Admin portal? (Enter 'yes' or 'no'): ");                        //Prompts for user input to continue or not
+                string moreAdmin = Console.ReadLine();
+                moreAdmin = moreAdmin.ToLower();                           //Converts input case to only lower case
+
+                if (moreAdmin == "y" || moreAdmin == "yes")                //Checks the condition to continue Admin portal or quit
+                {
+                    return true;
+                }
+                else if (moreAdmin == "n" || moreAdmin == "no")
+                {
+                    return false;
+                }
+                else
+                {
+                    Console.Write("Please enter only y or n!");                //Prompts user to only enter a y (yes ) or n (no) if another character is entered
+                }
+            }
+        }
+        public static void TopLevelMenu(List<Movie> AllMovies, string choice)
+        {
+            //Initialize the list of 5 movies
+            //AllMovies = new List<Movie>();
+            //Movie mymovie;
+
+            //mymovie = new Movie("The Rock", "Nicolas Cage", MovieGenre.Action, "Michael Bay");
+            //AllMovies.Add(mymovie);
+            //mymovie = new Movie("A Quiet Place 2", "Emily Blunt", MovieGenre.Horror, "Michael Bay");
+            //AllMovies.Add(mymovie);
+            //mymovie = new Movie("SongBird", "KJ Apa", MovieGenre.Thriller, "Michael Bay");
+            //AllMovies.Add(mymovie);
+            //mymovie = new Movie("I Am Number Four", "Alex Pettyfer", MovieGenre.Sci_Fi, "Michael Bay");
+            //AllMovies.Add(mymovie);
+            //mymovie = new Movie("Seven Samari", "Toshiro Mifune", MovieGenre.Drama, "Akira Kurosawa");
+            //AllMovies.Add(mymovie);
+
+            ////Top Level Greeting Menu
+            //Console.WriteLine("***************************************************");
+            //Console.WriteLine("* Welcome to MockBuster's Online Movie Repository *");
+            //Console.WriteLine("***************************************************");
+
+            ////Choose User Menu or Admin Menu
+            //Console.Write("Please choose (U)ser menu or (A)dmin menu: ");
+            //string choice = Console.ReadLine();
+
+            if (choice == "u" || choice == "U")
+            {
+                do
+                {
+                    //AllMovies = new List<Movie>();
+                    //Movie mymovie;
+//Goto UserMenu Funtions
+                    Console.Write("\nPlease choose a method to filter movies by: (G)enre, (N)ame, (A)ctor, or (D)irector: ");
+                    string filter = Console.ReadLine();
+
+                    if (filter == "g" || filter == "G")
+                    {
+                        //Movie GenreFilter = mymovie as Movie;
+                        Console.Write("Genre to filter by: ");
+                        string _GenreFilterStr = Console.ReadLine();
+                        _GenreFilterStr = _GenreFilterStr.ToUpper();
+
+                        User.FilterGenre(AllMovies, _GenreFilterStr);
+                    }
+
+
+
+                } while (contUser());
+        }
+            if (choice == "a" || choice == "A")
+            {
+                do
+                {
+                    //Console.WriteLine("\nHere's the current movie repository listing.\n");
+                    //MoviesRepo.GetMovie(AllMovies);
+
+ //Goto AdminMenu Functions
+                    Console.Write("\nPlease choose an action: (F)ilter movies, (A)dd movie, (E)dit movie, or (D)elete movie: ");
+                string action = Console.ReadLine();
+
+                if (action == "f" || choice == "F")
+                {
+ //Goto Admin Filter Functions
+                    Console.WriteLine("Go do Admin Filters");
+                }
+                if (action == "a" || choice == "A")
+                {
+                    //Goto Admin Add Function
+                    Console.WriteLine("\nPlease enter the following details for the movie:");
+                    Console.Write("Title: ");
+                    string _MovieName = Console.ReadLine();
+
+                    Console.Write("Main Actor: ");
+                    string _MainActor = Console.ReadLine();
+
+                    Console.Write("Genre: ");
+                    string _GenreStr = Console.ReadLine();
+                    _GenreStr = _GenreStr.ToUpper();
+                    //MovieGenre _Genre = MovieGenre.Action;
+                    //switch (_GenreStr)
+                    //{
+                    //    case "Action":
+                    //        _Genre = MovieGenre.Action;
+                    //        break;
+                    //    case "Horror":
+                    //        _Genre = MovieGenre.Horror;
+                    //        break;
+                    //    case "Thriller":
+                    //        _Genre = MovieGenre.Thriller;
+                    //        break;
+                    //    case "Sci-Fi":
+                    //        _Genre = MovieGenre.Sci_Fi;
+                    //        break;
+                    //    case "Drama":
+                    //        _Genre = MovieGenre.Drama;
+                    //        break;
+                    //}
+
+                    Console.Write("Director: ");
+                    string _Director = Console.ReadLine();
+                    Admin.AddMovie(AllMovies, _MovieName, _MainActor, _GenreStr, _Director);
+                }
+                if (action == "e" || choice == "E")
+                {
+                    Console.WriteLine("\nHere's the current movie repository listing.\n");
+                    MoviesRepo.GetMovie(AllMovies);
+
+//Goto Admin Edit Function
+                    Console.Write("\nPlease enter the number of the movie to edit: ");
+                    string MovieUpd = Console.ReadLine();
+                    int index = int.Parse(MovieUpd);
+                    Movie mymovie;
+
+                    mymovie = AllMovies[index - 1];
+                    Console.WriteLine("\nHere is the movie you chose to edit:\n");
+                    Console.WriteLine(mymovie);
+                    string MovieToUpd = mymovie.MovieName;
+                    Console.Write("\nPlease choose the field to edit: Movie (N)ame, Main (A)ctor, (G)enre (D)irector: ");
+                    string entry = Console.ReadLine();
+                    if (entry == "n" || entry == "N")
+                    {
+                        //Movie UpdMovie = mymovie as Movie;
+                        Console.Write("Updated Title: ");
+                        string UpdMovie = Console.ReadLine();
+                        Admin.EditMovieName(AllMovies, index, MovieToUpd, UpdMovie);
+                        //Console.WriteLine($"\n{MovieToUpd} was updated to {UpdMovie.MovieName}.");
+                        //Console.WriteLine("\nHere's the updated movie repository!");
+                        //AllMovies = MoviesRepo.GetMovie(AllMovies);
+                    }
+
+//Goto EditMainActor Function
+                    if (entry == "a" || entry == "A")
+                    {
+                        Movie UpdActor = mymovie as Movie;
+                        Console.Write("Updated Actor: ");
+                        string MainActorUpd = Console.ReadLine();
+                        //UpdActor.MainActor = Console.ReadLine();
+
+
+                        Admin.EditMainActor(AllMovies, index, MainActorUpd);
+
+                        //Console.WriteLine($"\n{UpdActor.MainActor} was updated to {UpdActor.MainActor}.");
+                        //Console.WriteLine("\nHere's the updated movie repository!");
+                        //MoviesRepo.ListMovies(TheList);
+                    }
+
+//Goto EditGenre Function
+                    if (entry == "g" || entry == "G")
+                    {
+                        Movie UpdGenre = mymovie as Movie;
+                        Console.Write("Updated Genre: ");
+                        string _GenreStr = Console.ReadLine();
+                        _GenreStr = _GenreStr.ToUpper();
+
+                        Admin.EditGenre(AllMovies, index, _GenreStr);
+                    }
+
+                    //Goto EditDirector Function
+                    if (entry == "d" || entry == "D")
+                    {
+                        Movie UpdDirector = mymovie as Movie;
+                        Console.Write("Updated Director: ");
+                        string DirectorUpd = Console.ReadLine();
+                        //UpdDirector.Director = Console.ReadLine();
+
+                        Admin.EditDirector(AllMovies, index, DirectorUpd);
+
+
+                        //Console.WriteLine($"\n{UpdDirector.MovieName} was updated to {UpdDirector.Director}.\n");
+                        //Console.WriteLine("\nHere's the updated movie repository!\n");
+                        //MoviesRepo.ListMovies(TheList);
+                    }
+                }
+
+//Goto Admin Delete Funtion
+                if (action == "d" || choice == "D")
+                {
+                    Console.WriteLine("\nHere's the current movie repository listing.\n");
+                    MoviesRepo.GetMovie(AllMovies);
+                    Console.Write("\nPlease enter the number of the movie to delete: ");
+                    string MovieDel = Console.ReadLine();
+                    int index = int.Parse(MovieDel);
+
+                    Console.WriteLine("\nHere is the movie you chose to delete:\n");
+                    Console.WriteLine(AllMovies[index - 1]);
+                    Console.Write("\nPlease confirm movie deletion: (y/n) ");
+                    string entry = Console.ReadLine();
+                    if (entry == "y" || entry == "Y")
+                    {
+                        Admin.DeleteMovie(AllMovies, index);
+                    }
+                }
+                } while (contAdmin());
+            }
+        }
+       
+        static void Main(string[] args)
+        {
+            ////Initialize the list of 5 movies
+            List<Movie> AllMovies = new List<Movie>();
+            //Movie mymovie;
+
+            //mymovie = new Movie("The Rock1", "Nicolas Cage", MovieGenre.Action, "Michael Bay");
+            //AllMovies.Add(mymovie);
+            //mymovie = new Movie("A Quiet Place", "Emily Blunt", MovieGenre.Horror, "Michael Bay");
+            //AllMovies.Add(mymovie);
+            //mymovie = new Movie("SongBird", "KJ Apa", MovieGenre.Thriller, "Michael Bay");
+            //AllMovies.Add(mymovie);
+            //mymovie = new Movie("I Am Number Four", "Alex Pettyfer", MovieGenre.Sci_Fi, "Michael Bay");
+            //AllMovies.Add(mymovie);
+            //mymovie = new Movie("Seven Samari", "Toshiro Mifune", MovieGenre.Drama, "Akira Kurosawa");
+            //AllMovies.Add(mymovie);
+
+            do
+            {
+                //Top Level Greeting Menu
+                Console.WriteLine("***************************************************");
+                Console.WriteLine("* Welcome to MockBuster's Online Movie Repository *");
+                Console.WriteLine("***************************************************");
+
+                MoviesRepo.GetMovie(AllMovies);
+                //Choose User Menu or Admin Menu
+                Console.Write("Please choose (U)ser menu or (A)dmin menu: ");
+                string choice = Console.ReadLine();
+                TopLevelMenu(MoviesRepo.GetMovie(AllMovies), choice);
+            } while (contBuster());
+            Console.WriteLine("Goodbye!! Thank you for stopping by MockBuster's Online Movie Repository!");
+
+
+
+
+            //Test movie repository
+            //Console.WriteLine("Let's test that movie repository!");
+            //MoviesRepo.ListMovies(AllMovies);
+
+            //Console.WriteLine("Let's test the Admin methods!");
+            //Add
+            //Admin.AddMovie(AllMovies);
+
+            //Delete,Remove
+            //Admin.Delete(AllMovies);
+            //Admin.Edit(AllMovies);
+
+        }
+    }
+}
+=================================User Partial Two Ways=============================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace MidTerm_MockBuster
+{
+   public enum MovieGenre
+    {
+        Action,
+        Horror,
+        Thriller,
+        Sci_Fi,
+        Drama,
+        Comedy,
+        War,
+        Western,
+        Sports,
+        Romance,
+        Crime
+    }
+
+    public class Movie
+    {
+        public string MovieName { get; set; }
+        public string MainActor { get; set; }
+        public MovieGenre Genre { get; set; }
+        public string Director { get; set; }
+
+        public Movie(string _MovieName, string _MainActor, MovieGenre _Genre, string _Director)
+        {
+            MovieName = _MovieName;
+            MainActor = _MainActor;
+            Genre = _Genre;
+            Director = _Director;
+        }
+
+        public override string ToString()
+        {
+            return $"Title: {MovieName}, Actor: {MainActor}, Genre: {Genre}, Director: {Director}";
+        }
+    }
+
+    public class MoviesRepo
+    {
+        public static List<Movie> GetMovie(List<Movie> TheList)
+        {
+
+            List<Movie> AllMovies = new List<Movie>();
+            //Movie mymovie;
+
+            //mymovie = new Movie("The Rock", "Nicolas Cage", "Action", "Michael Bay");
+            //AllMovies.Add(mymovie);
+            //mymovie = new Movie("A Quiet Place 2", "Emily Blunt", "Horror", "Michael Bay");
+            //AllMovies.Add(mymovie);
+            //mymovie = new Movie("SongBird", "KJ Apa", "Thriller", "Michael Bay");
+            //AllMovies.Add(mymovie);
+            //mymovie = new Movie("I Am Number Four", "Alex Pettyfer", "Sci-Fi", "Michael Bay");
+            //AllMovies.Add(mymovie);
+            //mymovie = new Movie("Seven Samari", "Toshiro Mifune", "Drama", "Akira Kurosawa");
+            //AllMovies.Add(mymovie);
+
+            AllMovies = new List<Movie>
+            {
+                new Movie("The Rock", "Nicolas Cage", MovieGenre.Action, "Michael Bay"),
+                new Movie("A Quiet Place", "Emily Blunt", MovieGenre.Horror, "Michael Bay"),
+                new Movie("The Rock", "KJ Apa", MovieGenre.Thriller, "Michael Bay"),
+                new Movie("I Am Number Four", "Alex Pettyfer", MovieGenre.Sci_Fi, "Michael Bay"),
+                new Movie("Seven Samari", "Toshiro Mifune", MovieGenre.Drama, "Akira Kurosawa"),
+            };
+
+            for (int index = 0; index < TheList.Count; index++)
+            {
+                Console.WriteLine($"{index + 1}. {TheList[index]}");
+            }
+
+            return AllMovies;
+        }
+    }
+
+    class User
+    {
+        //UserMenu
+        //Method to filter by Genre
+        public static void FilterGenre(List<Movie> AllMovies, string _GenreFilterStr)
+        {
+            AllMovies = new List<Movie>();
+            //Movie mymovie;
+            //var movieQuery = genre in AllMovies where MovieGenre _Genre
+            
+            //switch (_GenreFilterStr)
+            //{
+            //    case "ACTION":
+            //        {
+            //            List<Movie> results = AllMovies.FindAll(FindAction);
+            //            if (results.Count != 0)
+            //            {
+            //                Console.WriteLine(results); 
+            //            }
+            //        }
+            //        break;
+                //case "HORROR":
+                //    _Genre = MovieGenre.Horror;
+                //    break;
+                //case "THRILLER":
+                //    _Genre = MovieGenre.Thriller;
+                //    break;
+                //case "SCI-FI":
+                //    _Genre = MovieGenre.Sci_Fi;
+                //    break;
+                //case "DRAMA":
+                //    _Genre = MovieGenre.Drama;
+                //    break;
+            //}
+        }
+
+        //Method to filter by MovieName
+        public static void FilterMovieName(List<Movie> TheList, string FilterName)
+        {
+            List<Movie> names = new List<Movie>(TheList);
+
+            foreach (var name in from name in names
+                                 where name.MovieName == FilterName
+                                 select new { name.MovieName, name.MainActor, name.Genre, name.Director })
+            {
+                Console.WriteLine($"Title: { name.MovieName}, Actor: { name.MainActor}, Genre: { name.Genre}, Director: { name.Director}");
+            }
+                Console.WriteLine("That movie doesn't exist. Please try again.");
+        }
+
+        //Method to filter by MainActor
+        public static void FilterMainActor(List<Movie> TheList, string FilterName)
+        {
+            List<Movie> names = new List<Movie>(TheList);
+            
+            foreach (var name in from name in names
+                                 where name.MainActor == FilterName
+                                 select new { name.MovieName, name.MainActor, name.Genre, name.Director })
+
+            {
+                Console.WriteLine($"Title: { name.MovieName}, Actor: { name.MainActor}, Genre: { name.Genre}, Director: { name.Director}");
+            }
+            //else
+            //{
+            //    Console.WriteLine("That actor doesn't exist in our movie repository. Please try again.");
+            //}
+                
+        }
+
+        //Method to filter by Genre
+
+        //Method to filter by Director
+        public static void FilterDirector(List<Movie> TheList, string FilterName)
+        {
+            List<Movie> names = new List<Movie>(TheList);
+
+            Movie found = null;
+            foreach (Movie check in names)
+            {
+                if (check.Director == FilterName)
+                {
+                    found = check;
+                    Console.WriteLine($"Title: { found.MovieName}, Actor: { found.MainActor}, Genre: { found.Genre}, Director: { found.Director}");
+                    //found = check;
+                    
+                }
+                else if(found == null)
+                {
+                    Console.WriteLine($"{FilterName} doesn't exist in our movie repository. Please try again.");
+                }
+            }
+        }
+    }
+
+    class Admin
+    {
+        //Menu's Allow for filtering and CRUD functions
+        //AdminMenu
+        //Method to filter by Genre(Read/List)
+
+        //Method to filter by MovieName(Read/List)
+
+        //Methof to filter by MainActor(Read)
+
+        //Method to filter by Director(Read/List)
+
+//Method to AddMovie(Create)
+        public static void AddMovie(List<Movie> AllMovies, string _MovieName, string  _MainActor, string _GenreStr, string _Director)
+        {
+            MovieGenre _Genre = MovieGenre.Action;
+            switch (_GenreStr)
+            {
+                case "ACTION":
+                    _Genre = MovieGenre.Action;
+                    break;
+                case "HORROR":
+                    _Genre = MovieGenre.Horror;
+                    break;
+                case "THRILLER":
+                    _Genre = MovieGenre.Thriller;
+                    break;
+                case "SCI-FI":
+                    _Genre = MovieGenre.Sci_Fi;
+                    break;
+                case "DRAMA":
+                    _Genre = MovieGenre.Drama;
+                    break;
+                case "COMEDY":
+                    _Genre = MovieGenre.Comedy;
+                    break;
+                case "WAR":
+                    _Genre = MovieGenre.War;
+                    break;
+                case "WESTERN":
+                    _Genre = MovieGenre.Western;
+                    break;
+                case "SPORTS":
+                    _Genre = MovieGenre.Sports;
+                    break;
+                case "ROMANCE":
+                    _Genre = MovieGenre.Romance;
+                    break;
+                case "CRIME":
+                    _Genre = MovieGenre.Crime;
+                    break;
+            }
+
+
+            Movie mymovie = new Movie(_MovieName, _MainActor, _Genre, _Director);
+            AllMovies.Add(mymovie);
+            Console.WriteLine($"Added new movie {mymovie} to the repository.\n");
+            Console.WriteLine("\nHere's the updated movie repository!\n");
+            //AllMovies = MoviesRepo.GetMovie(AllMovies);
+            MoviesRepo.GetMovie(AllMovies);
+        }
+
+        //Methods to Edit(Update) MovieName, MainActor, Genre, Director
+
+//Method to Edit MovieName
+
+        public static void EditMovieName(List<Movie> AllMovies, int index, string MovieToUpd, string UpdMovie)
+        {
+            Movie mymovie = AllMovies[index - 1];
+            MovieToUpd = mymovie.MovieName;
+
+            Movie UpdMovieName = mymovie as Movie;
+            //    Console.Write("Updated Director: ");
+            UpdMovieName.MovieName = UpdMovie;
+            Console.WriteLine($"\nThe Movie {MovieToUpd} was updated to {UpdMovieName.MovieName}.\n");
+            Console.WriteLine("\nHere's the updated movie repository!\n");
+            MoviesRepo.GetMovie(AllMovies);
+        }
+
+//Method to Edit MainActor
+        public static void EditMainActor(List<Movie> AllMovies, int index, string MainActorUpd)
+        {
+            Movie mymovie = AllMovies[index - 1];
+            //string MovieToUpd = mymovie.MovieName;
+
+            Movie UpdActor = mymovie as Movie;
+            //    Console.Write("Updated Director: ");
+            UpdActor.MainActor = MainActorUpd;
+            Console.WriteLine($"\nThe Main Actor for {UpdActor.MovieName} was updated to {UpdActor.MainActor}.\n");
+            Console.WriteLine("\nHere's the updated movie repository!\n");
+            AllMovies = MoviesRepo.GetMovie(AllMovies);
+        }
+
+        //Method to Edit Genre
+        public static void EditGenre(List<Movie> AllMovies, int index, string _GenreStr)
+        {
+            //Console.WriteLine("Here's the current movie repository listing.");
+            //MoviesRepo.ListMovies(TheList);
+            //Console.Write("Please enter the number of the movie to edit: ");
+            //string MovieUpd = Console.ReadLine();
+            //int index = int.Parse(MovieUpd);
+
+            Movie mymovie = AllMovies[index - 1];
+            //Console.WriteLine("Here is the movie you chose to edit");
+            //Console.WriteLine(mymovie);
+            string MovieToUpd = mymovie.MovieName;
+            //Console.Write("Please choose the field to edit: Movie (N)ame, Main (A)ctor, (G)enre (D)irector: ");
+            //string entry = Console.ReadLine();
+            //if (entry == "n" || entry == "N")
+            //{
+            //    Movie UpdMovie = mymovie as Movie;
+            //    Console.Write("Updated Title: ");
+            //    UpdMovie.MovieName = Console.ReadLine();
+            //    Console.WriteLine($"\n{MovieToUpd} was updated to {UpdMovie.MovieName}.");
+            //    Console.WriteLine("\nHere's the updated movie repository!");
+            //    MoviesRepo.ListMovies(TheList);
+            //}
+            //if (entry == "a" || entry == "A")
+            //{
+            //    Movie UpdActor = mymovie as Movie;
+            //    Console.Write("Updated Actor: ");
+            //    UpdActor.MainActor = Console.ReadLine();
+            //    Console.WriteLine($"\n{UpdActor.MainActor} was updated to {UpdActor.MainActor}.");
+            //    Console.WriteLine("\nHere's the updated movie repository!");
+            //    MoviesRepo.ListMovies(TheList);
+            //}
+            //if (entry == "g" || entry == "G")
+            //{
+                Movie UpdGenre = mymovie as Movie;
+            //    Console.Write("Updated Genre: ");
+            //    string _GenreStr = Console.ReadLine();
+            //    _GenreStr = _GenreStr.ToUpper();
+                UpdGenre.Genre = MovieGenre.Action;
+                switch (_GenreStr)
+                {
+                    case "ACTION":
+                        UpdGenre.Genre = MovieGenre.Action;
+                        break;
+                    case "HORROR":
+                        UpdGenre.Genre = MovieGenre.Horror;
+                        break;
+                    case "THRILLER":
+                        UpdGenre.Genre = MovieGenre.Thriller;
+                        break;
+                    case "SCI-FI":
+                        UpdGenre.Genre = MovieGenre.Sci_Fi;
+                        break;
+                    case "DRAMA":
+                        UpdGenre.Genre = MovieGenre.Drama;
+                        break;
+                    case "COMEDY":
+                        UpdGenre.Genre = MovieGenre.Comedy;
+                        break;
+                    case "WAR":
+                        UpdGenre.Genre = MovieGenre.War;
+                        break;
+                    case "WESTERN":
+                        UpdGenre.Genre = MovieGenre.Western;
+                        break;
+                    case "SPORTS":
+                        UpdGenre.Genre = MovieGenre.Sports;
+                        break;
+                    case "ROMANCE":
+                        UpdGenre.Genre = MovieGenre.Romance;
+                        break;
+                    case "CRIME":
+                        UpdGenre.Genre = MovieGenre.Crime;
+                        break;
+                }
+                Console.WriteLine($"The Genre for {UpdGenre.MovieName} was updated to {_GenreStr}.");
+                Console.WriteLine("\nHere's the updated movie repository!\n");
+                AllMovies = MoviesRepo.GetMovie(AllMovies);
+        }
+
+        //Method to Edit Director
+        public static void EditDirector(List<Movie> AllMovies, int index, string DirectorUpd)
+        {
+            Movie mymovie = AllMovies[index - 1];
+            //string MovieToUpd = mymovie.MovieName;
+
+            Movie UpdDirector = mymovie as Movie;
+            //    Console.Write("Updated Director: ");
+            UpdDirector.Director = DirectorUpd;
+            Console.WriteLine($"\nThe Director for {UpdDirector.MovieName} was updated to {UpdDirector.Director}.\n");
+            Console.WriteLine("\nHere's the updated movie repository!\n");
+            AllMovies = MoviesRepo.GetMovie(AllMovies);
+        }
+
+        //Method to DeleteMovie(Remove)
+        public static void DeleteMovie(List<Movie> AllMovies, int index)
+        {
+            //Console.WriteLine("Here's the current movie repository listing.");
+            //MoviesRepo.ListMovies(TheList);
+            //Console.Write("Please enter the number of the movie to delete: ");
+            //string MovieDel = Console.ReadLine();
+            //int index = int.Parse(MovieDel);
+
+            //Console.WriteLine("Here is the movie you chose to delete");
+            //Console.WriteLine(TheList[index - 1]);
+            //Console.Write("Please confirm movie deletion: (y/n) ");
+            //string entry = Console.ReadLine();
+            //if (entry == "y" || entry == "Y")
+            //{
+                Console.WriteLine($"\nThe record for {AllMovies[index - 1]} has been deleted.");
+                AllMovies.RemoveAt(index - 1);
+                Console.WriteLine("\nHere's the updated movie repository!\n");
+                AllMovies = MoviesRepo.GetMovie(AllMovies);
+            //}
+        }
+    }
+
+    class Program
+    {
+        static bool contBuster()
+        {
+            while (true)
+            {
+                Console.WriteLine("\n******************************************");
+                Console.WriteLine("* Welcome Back to MockBuster's Main Menu *");
+                Console.WriteLine("******************************************");
+                Console.Write("\nDo you want to stay logged into MockBuster'S Movie Respository? (Enter 'yes' or 'no'): ");                        //Prompts for user input to continue or not
+                string moreBuster = Console.ReadLine();
+                moreBuster = moreBuster.ToLower();                           //Converts input case to only lower case
+
+                if (moreBuster == "y" || moreBuster == "yes")                //Checks the condition to continue measuring rooms or quit
+                {
+                    return true;
+                }
+                else if (moreBuster == "n" || moreBuster == "no")
+                {
+                    return false;
+                }
+                else
+                {
+                    Console.Write("Please enter only y or n!");                //Prompts user to only enter a y (yes ) or n (no) if another character is entered
+                }
+            }
+        }
+
+        static bool contUser()
+        {
+            while (true)
+            {
+                Console.Write("\n\nDo you want to stay logged into the User portal? (Enter 'yes' or 'no'): ");                        //Prompts for user input to continue or not
+                string moreUser = Console.ReadLine();
+                moreUser = moreUser.ToLower();                           //Converts input case to only lower case
+
+                if (moreUser == "y" || moreUser == "yes")                //Checks the condition to continue User portal or quit
+                {
+                    return true;
+                }
+                else if (moreUser == "n" || moreUser == "no")
+                {
+                    return false;
+                }
+                else
+                {
+                    Console.Write("Please enter only y or n!");                //Prompts user to only enter a y (yes ) or n (no) if another character is entered
+                }
+            }
+        }
+
+        static bool contAdmin()
+        {
+            while (true)
+            {
+                Console.Write("\n\nDo you want to stay logged into the Admin portal? (Enter 'yes' or 'no'): ");                        //Prompts for user input to continue or not
+                string moreAdmin = Console.ReadLine();
+                moreAdmin = moreAdmin.ToLower();                           //Converts input case to only lower case
+
+                if (moreAdmin == "y" || moreAdmin == "yes")                //Checks the condition to continue Admin portal or quit
+                {
+                    return true;
+                }
+                else if (moreAdmin == "n" || moreAdmin == "no")
+                {
+                    return false;
+                }
+                else
+                {
+                    Console.Write("Please enter only y or n!");                //Prompts user to only enter a y (yes ) or n (no) if another character is entered
+                }
+            }
+        }
+        public static void TopLevelMenu(List<Movie> AllMovies, string choice)
+        {
+            //Initialize the list of 5 movies
+            //AllMovies = new List<Movie>();
+            //Movie mymovie;
+
+            //mymovie = new Movie("The Rock", "Nicolas Cage", MovieGenre.Action, "Michael Bay");
+            //AllMovies.Add(mymovie);
+            //mymovie = new Movie("A Quiet Place 2", "Emily Blunt", MovieGenre.Horror, "Michael Bay");
+            //AllMovies.Add(mymovie);
+            //mymovie = new Movie("SongBird", "KJ Apa", MovieGenre.Thriller, "Michael Bay");
+            //AllMovies.Add(mymovie);
+            //mymovie = new Movie("I Am Number Four", "Alex Pettyfer", MovieGenre.Sci_Fi, "Michael Bay");
+            //AllMovies.Add(mymovie);
+            //mymovie = new Movie("Seven Samari", "Toshiro Mifune", MovieGenre.Drama, "Akira Kurosawa");
+            //AllMovies.Add(mymovie);
+
+            ////Top Level Greeting Menu
+            //Console.WriteLine("***************************************************");
+            //Console.WriteLine("* Welcome to MockBuster's Online Movie Repository *");
+            //Console.WriteLine("***************************************************");
+
+            ////Choose User Menu or Admin Menu
+            //Console.Write("Please choose (U)ser menu or (A)dmin menu: ");
+            //string choice = Console.ReadLine();
+
+            if (choice == "u" || choice == "U")
+            {
+                do
+                {
+                    //AllMovies = new List<Movie>();
+                    //Movie mymovie;
+//Goto UserMenu Funtions
+                    Console.Write("\nPlease choose a method to filter movies by: (N)ame, (A)ctor, (G)enre, or (D)irector: ");
+                    string filter = Console.ReadLine();
+
+                    if (filter == "n" || filter == "N")
+                    {
+                        //Goto Admin Add Function
+                        Console.Write("\nPlease enter the movie name to filter by: ");
+                        //Console.Write("Title: ");
+                        string FilterName = Console.ReadLine();
+                        User.FilterMovieName(AllMovies, FilterName);
+                    }
+
+                    if (filter == "a" || filter == "A")
+                    {
+                        //Goto Admin Add Function
+                        Console.Write("\nPlease enter the actor name to filter by: ");
+                        //Console.Write("Actor: ");
+                        string FilterName = Console.ReadLine();
+                        User.FilterMovieName(AllMovies, FilterName);
+                    }
+
+
+                    if (filter == "g" || filter == "G")
+                    {
+                        //Movie GenreFilter = mymovie as Movie;
+                        Console.Write("Genre to filter by: ");
+                        string _GenreFilterStr = Console.ReadLine();
+                        _GenreFilterStr = _GenreFilterStr.ToUpper();
+
+                        User.FilterGenre(AllMovies, _GenreFilterStr);
+                    }
+
+                    if (filter == "d" || filter == "D")
+                    {
+                        //Goto Admin Add Function
+                        Console.Write("\nPlease enter the director name to filter by: ");
+                        //Console.Write("Director: ");
+                        string FilterName = Console.ReadLine();
+                        User.FilterDirector(AllMovies, FilterName);
+                    }
+
+                } while (contUser());
+        }
+            if (choice == "a" || choice == "A")
+            {
+                do
+                {
+                    //Console.WriteLine("\nHere's the current movie repository listing.\n");
+                    //MoviesRepo.GetMovie(AllMovies);
+
+ //Goto AdminMenu Functions
+                    Console.Write("\nPlease choose an action: (F)ilter movies, (A)dd movie, (E)dit movie, or (D)elete movie: ");
+                string action = Console.ReadLine();
+
+                if (action == "f" || choice == "F")
+                {
+ //Goto Admin Filter Functions
+                    Console.WriteLine("Go do Admin Filters");
+                }
+                if (action == "a" || choice == "A")
+                {
+                    //Goto Admin Add Function
+                    Console.WriteLine("\nPlease enter the following details for the movie:");
+                    Console.Write("Title: ");
+                    string _MovieName = Console.ReadLine();
+
+                    Console.Write("Main Actor: ");
+                    string _MainActor = Console.ReadLine();
+
+                    Console.Write("Genre: ");
+                    string _GenreStr = Console.ReadLine();
+                    _GenreStr = _GenreStr.ToUpper();
+                    //MovieGenre _Genre = MovieGenre.Action;
+                    //switch (_GenreStr)
+                    //{
+                    //    case "Action":
+                    //        _Genre = MovieGenre.Action;
+                    //        break;
+                    //    case "Horror":
+                    //        _Genre = MovieGenre.Horror;
+                    //        break;
+                    //    case "Thriller":
+                    //        _Genre = MovieGenre.Thriller;
+                    //        break;
+                    //    case "Sci-Fi":
+                    //        _Genre = MovieGenre.Sci_Fi;
+                    //        break;
+                    //    case "Drama":
+                    //        _Genre = MovieGenre.Drama;
+                    //        break;
+                    //}
+
+                    Console.Write("Director: ");
+                    string _Director = Console.ReadLine();
+                    Admin.AddMovie(AllMovies, _MovieName, _MainActor, _GenreStr, _Director);
+                }
+                if (action == "e" || choice == "E")
+                {
+                    Console.WriteLine("\nHere's the current movie repository listing.\n");
+                    MoviesRepo.GetMovie(AllMovies);
+
+//Goto Admin Edit Function
+                    Console.Write("\nPlease enter the number of the movie to edit: ");
+                    string MovieUpd = Console.ReadLine();
+                    int index = int.Parse(MovieUpd);
+                    Movie mymovie;
+
+                    mymovie = AllMovies[index - 1];
+                    Console.WriteLine("\nHere is the movie you chose to edit:\n");
+                    Console.WriteLine(mymovie);
+                    string MovieToUpd = mymovie.MovieName;
+                    Console.Write("\nPlease choose the field to edit: Movie (N)ame, Main (A)ctor, (G)enre (D)irector: ");
+                    string entry = Console.ReadLine();
+                    if (entry == "n" || entry == "N")
+                    {
+                        //Movie UpdMovie = mymovie as Movie;
+                        Console.Write("Updated Title: ");
+                        string UpdMovie = Console.ReadLine();
+                        Admin.EditMovieName(AllMovies, index, MovieToUpd, UpdMovie);
+                        //Console.WriteLine($"\n{MovieToUpd} was updated to {UpdMovie.MovieName}.");
+                        //Console.WriteLine("\nHere's the updated movie repository!");
+                        //AllMovies = MoviesRepo.GetMovie(AllMovies);
+                    }
+
+//Goto EditMainActor Function
+                    if (entry == "a" || entry == "A")
+                    {
+                        Movie UpdActor = mymovie as Movie;
+                        Console.Write("Updated Actor: ");
+                        string MainActorUpd = Console.ReadLine();
+                        //UpdActor.MainActor = Console.ReadLine();
+
+
+                        Admin.EditMainActor(AllMovies, index, MainActorUpd);
+
+                        //Console.WriteLine($"\n{UpdActor.MainActor} was updated to {UpdActor.MainActor}.");
+                        //Console.WriteLine("\nHere's the updated movie repository!");
+                        //MoviesRepo.ListMovies(TheList);
+                    }
+
+//Goto EditGenre Function
+                    if (entry == "g" || entry == "G")
+                    {
+                        Movie UpdGenre = mymovie as Movie;
+                        Console.Write("Updated Genre: ");
+                        string _GenreStr = Console.ReadLine();
+                        _GenreStr = _GenreStr.ToUpper();
+
+                        Admin.EditGenre(AllMovies, index, _GenreStr);
+                    }
+
+                    //Goto EditDirector Function
+                    if (entry == "d" || entry == "D")
+                    {
+                        Movie UpdDirector = mymovie as Movie;
+                        Console.Write("Updated Director: ");
+                        string DirectorUpd = Console.ReadLine();
+                        //UpdDirector.Director = Console.ReadLine();
+
+                        Admin.EditDirector(AllMovies, index, DirectorUpd);
+
+
+                        //Console.WriteLine($"\n{UpdDirector.MovieName} was updated to {UpdDirector.Director}.\n");
+                        //Console.WriteLine("\nHere's the updated movie repository!\n");
+                        //MoviesRepo.ListMovies(TheList);
+                    }
+                }
+
+//Goto Admin Delete Funtion
+                if (action == "d" || choice == "D")
+                {
+                    Console.WriteLine("\nHere's the current movie repository listing.\n");
+                    MoviesRepo.GetMovie(AllMovies);
+                    Console.Write("\nPlease enter the number of the movie to delete: ");
+                    string MovieDel = Console.ReadLine();
+                    int index = int.Parse(MovieDel);
+
+                    Console.WriteLine("\nHere is the movie you chose to delete:\n");
+                    Console.WriteLine(AllMovies[index - 1]);
+                    Console.Write("\nPlease confirm movie deletion: (y/n) ");
+                    string entry = Console.ReadLine();
+                    if (entry == "y" || entry == "Y")
+                    {
+                        Admin.DeleteMovie(AllMovies, index);
+                    }
+                }
+                } while (contAdmin());
+            }
+        }
+       
+        static void Main(string[] args)
+        {
+            ////Initialize the list of 5 movies
+            List<Movie> AllMovies = new List<Movie>();
+            //Movie mymovie;
+
+            //mymovie = new Movie("The Rock1", "Nicolas Cage", MovieGenre.Action, "Michael Bay");
+            //AllMovies.Add(mymovie);
+            //mymovie = new Movie("A Quiet Place", "Emily Blunt", MovieGenre.Horror, "Michael Bay");
+            //AllMovies.Add(mymovie);
+            //mymovie = new Movie("SongBird", "KJ Apa", MovieGenre.Thriller, "Michael Bay");
+            //AllMovies.Add(mymovie);
+            //mymovie = new Movie("I Am Number Four", "Alex Pettyfer", MovieGenre.Sci_Fi, "Michael Bay");
+            //AllMovies.Add(mymovie);
+            //mymovie = new Movie("Seven Samari", "Toshiro Mifune", MovieGenre.Drama, "Akira Kurosawa");
+            //AllMovies.Add(mymovie);
+
+            do
+            {
+                //Top Level Greeting Menu
+                Console.WriteLine("***************************************************");
+                Console.WriteLine("* Welcome to MockBuster's Online Movie Repository *");
+                Console.WriteLine("***************************************************");
+
+                MoviesRepo.GetMovie(AllMovies);
+                //Choose User Menu or Admin Menu
+                Console.Write("Please choose (U)ser menu or (A)dmin menu: ");
+                string choice = Console.ReadLine();
+                TopLevelMenu(MoviesRepo.GetMovie(AllMovies), choice);
+            } while (contBuster());
+            Console.WriteLine("Goodbye!! Thank you for stopping by MockBuster's Online Movie Repository!");
+
+
+
+
+            //Test movie repository
+            //Console.WriteLine("Let's test that movie repository!");
+            //MoviesRepo.ListMovies(AllMovies);
+
+            //Console.WriteLine("Let's test the Admin methods!");
+            //Add
+            //Admin.AddMovie(AllMovies);
+
+            //Delete,Remove
+            //Admin.Delete(AllMovies);
+            //Admin.Edit(AllMovies);
+
+        }
+    }
+}
