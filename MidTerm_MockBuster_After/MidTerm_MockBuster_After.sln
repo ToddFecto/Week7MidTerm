@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31409.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MidTerm_MockBuster_After", "MidTerm_MockBuster_After\MidTerm_MockBuster_After.csproj", "{180F460E-F173-453B-BD5A-CF1A26DF4ECC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MidTerm_MockBuster_After_Test", "MidTerm_MockBuster_After_Test\MidTerm_MockBuster_After_Test.csproj", "{8BA726C3-11E4-489A-8D53-5ABCBFC74589}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{180F460E-F173-453B-BD5A-CF1A26DF4ECC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{180F460E-F173-453B-BD5A-CF1A26DF4ECC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{180F460E-F173-453B-BD5A-CF1A26DF4ECC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{180F460E-F173-453B-BD5A-CF1A26DF4ECC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BA726C3-11E4-489A-8D53-5ABCBFC74589}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BA726C3-11E4-489A-8D53-5ABCBFC74589}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BA726C3-11E4-489A-8D53-5ABCBFC74589}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BA726C3-11E4-489A-8D53-5ABCBFC74589}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B842D49E-C5E7-4CC8-B2F7-4D2BF7672687}
+	EndGlobalSection
+EndGlobal
